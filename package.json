@@ -9,6 +9,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode=development ",
     "build": "webpack --mode=production",
+    "tslint": "tslint './src/**/*.{ts,tsx}'",
     "deploy": "gh-pages -d dist",
     "publish": "npm run build && npm run deploy"
   },
@@ -19,7 +20,12 @@
     "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.18.2",
     "ts-loader": "^6.0.4",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
     "typescript": "^3.6.2",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8",

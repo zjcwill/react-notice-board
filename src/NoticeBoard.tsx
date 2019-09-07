@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 export default class NoticeBoard extends React.PureComponent {
   render() {
-    return (
-      <div>
-        NoticeBoard
-      </div>
-    )
+    return <div>NoticeBoard</div>;
   }
 }

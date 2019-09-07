@@ -1,0 +1,16 @@
+{
+  "defaultSeverity": "warning",
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+  "jsRules": {},
+  "rules": {
+    "no-implicit-dependencies": false,
+    "jsx-boolean-value": ["always", { "never": ["exact"] }],
+    "jsx-no-lambda": ["always", { "never": ["onClick"] }],
+    "object-literal-sort-keys": false,
+    "prettier": true,
+    "no-shadowed-variable": false,
+    "interface-name": false,
+    "member-access": [false]
+  },
+  "rulesDirectory": ["tslint-plugin-prettier"]
+}

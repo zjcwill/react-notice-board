@@ -22,6 +22,13 @@ const Wrapper = styled.div<IProps>`
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   overflow: hidden;
+  display: flex;
+`;
+
+const LogoImg = styled.img`
+  width: 31px;
+  height: 14px;
+  margin: auto 12px auto 16px;
 `;
 
 const Content = styled.div<IContent>`
@@ -116,7 +123,7 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
     return (
       <div>
         <Wrapper {...this.props}>
-          <img src={IMG_LOGO} />
+          <LogoImg src={IMG_LOGO} />
           <Content
             {...this.props}
             animation={this.scrollKeyFrames}

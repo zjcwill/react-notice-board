@@ -6,6 +6,7 @@ interface IProps {
   dataSource: string[];
   stepDuration?: number;
   height?: number;
+  extra?: React.ReactElement | null | false;
 }
 interface IState {
   dataSource: string[];
@@ -35,11 +36,18 @@ const Content = styled.div<IContent>`
   overflow: hidden;
   animation: ${props => (props.animation ? props.animation : "")}
     ${props => props.duration}s linear infinite;
+    margin-right:auto;
 `;
 const Text = styled.p<IProps>`
   color: #ff6f41;
   line-height: ${props => (props.height ? `${props.height}px` : "44px")};
   margin: 0;
+`;
+
+const ExtraWrapper = styled.div`
+  float: right;
+  display: flex;
+  align-items: center;
 `;
 
 export default class NoticeBoard extends React.PureComponent<IProps, IState> {
@@ -120,6 +128,7 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
   };
   render() {
     const { dataSource } = this.state;
+    const { extra } = this.props;
     return (
       <div>
         <Wrapper {...this.props}>
@@ -135,6 +144,7 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
               </Text>
             ))}
           </Content>
+          {extra && <ExtraWrapper>{extra}</ExtraWrapper>}
         </Wrapper>
       </div>
     );

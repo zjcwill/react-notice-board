@@ -5,3 +5,4 @@ yarn.lock
 tsconfig.json
 tslint.json
 package-lock.json
+dist

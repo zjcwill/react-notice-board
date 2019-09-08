@@ -1,47 +1,52 @@
 const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  template: path.join(__dirname, './example/src/index.html'),
+  filename: './index.html'
+});
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: path.join(__dirname, './example/src/index.tsx'),
+  output: {
+    path: path.join(__dirname, 'example/dist'),
+    filename: 'bundle.js'
+  },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
+        test: /\.tsx?/,
+        loader: 'ts-loader'
       },
       {
-        test: /\.html$/,
-        use: 'html-loader'
+        // pre/nomal/post - loader的执行顺序 - 前/中/后
+        enforce: 'pre',
+        test: /\.tsx?/,
+        loader: 'source-map-loader'
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          'url-loader?limit=8192&name=img/[name]-[hash:5].[ext]',
-          //图片压缩
-          'image-webpack-loader'
-        ]
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpg|gif|mp4)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 20
+          }
+        }
       }
     ]
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html'
-    }),
-    new CleanWebpackPlugin()
-  ],
+  //映射工具
+  // devtool: 'source-map',
+  //处理路径解析
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    //extensions 拓展名
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json']
   },
-  output: {
-    filename: '[name].[chunkhash:8].js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  }
+  plugins: [htmlWebpackPlugin]
+  // devServer: {
+  //   port: 3005
+  // }
 };

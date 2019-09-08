@@ -47,6 +47,9 @@ const Text = styled.p<IProps>`
   color: #ff6f41;
   line-height: ${props => (props.height ? `${props.height}px` : "44px")};
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const ExtraWrapper = styled.div`

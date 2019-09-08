@@ -5,7 +5,7 @@
 ## 预览 Preview
 
 ![](./intr.gif)
-在线预览：http://zjcwill.top/react-notice-board/
+在线预览（效果更佳）：http://zjcwill.top/react-notice-board/
 
 ## 安装 Installation
 

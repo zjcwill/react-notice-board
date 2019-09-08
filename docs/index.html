@@ -67,14 +67,83 @@
 				<a href="#一款-react-上下无缝滚动公告栏组件" id="一款-react-上下无缝滚动公告栏组件" style="color: inherit; text-decoration: none;">
 					<h1>一款 React 上下无缝滚动公告栏组件</h1>
 				</a>
-				<p><img src="./intr.gif" alt="">
-				预览：<a href="http://zjcwill.top/react-notice-board/">http://zjcwill.top/react-notice-board/</a></p>
-				<a href="#安装" id="安装" style="color: inherit; text-decoration: none;">
-					<h2>安装</h2>
+				<blockquote>
+					<p>A React notice board component can seamlessly up and down.</p>
+				</blockquote>
+				<a href="#预览-preview" id="预览-preview" style="color: inherit; text-decoration: none;">
+					<h2>预览 Preview</h2>
 				</a>
-				<pre><code class="language-bash">npm i  react-notice-board
+				<p><img src="./intr.gif" alt="">
+				在线预览（效果更佳）：<a href="http://zjcwill.top/react-notice-board/">http://zjcwill.top/react-notice-board/</a></p>
+				<a href="#安装-installation" id="安装-installation" style="color: inherit; text-decoration: none;">
+					<h2>安装 Installation</h2>
+				</a>
+				<pre><code class="language-bash">npm i react-notice-board
 <span class="hljs-comment"># or</span>
 yarn add react-notice-board</code></pre>
+				<a href="#文档-document" id="文档-document" style="color: inherit; text-decoration: none;">
+					<h2>文档 Document</h2>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th>Attribute</th>
+							<th>Description</th>
+							<th>Type</th>
+							<th>Default</th>
+							<th>Version</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>dataSource</td>
+							<td>公告内容</td>
+							<td>*string[ ]*</td>
+							<td><code>[]</code></td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>stepDuration</td>
+							<td>每条公告停顿时长</td>
+							<td><em>number</em></td>
+							<td><code>1000</code></td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>width</td>
+							<td>公告栏长度</td>
+							<td><em>number</em></td>
+							<td><code>100%</code></td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>height</td>
+							<td>公告栏高度</td>
+							<td><em>number</em></td>
+							<td><code>44px</code></td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>extra</td>
+							<td>公告栏右侧额外内容</td>
+							<td><em>ReactElement</em></td>
+							<td><code>null</code></td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>textClassName</td>
+							<td>公告栏文字内容样式类名</td>
+							<td><em>string</em></td>
+							<td><code>&quot;&quot;</code></td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>hideBrand</td>
+							<td>隐藏公告栏图案</td>
+							<td><em>boolean</em></td>
+							<td><code>false</code></td>
+							<td>-</td>
+						</tr>
+				</tbody></table>
 				<a href="#todo-待实现" id="todo-待实现" style="color: inherit; text-decoration: none;">
 					<h2>TODO 待实现</h2>
 				</a>
@@ -83,7 +152,7 @@ yarn add react-notice-board</code></pre>
 					<li>自定义配置项</li>
 					<li>边界防御</li>
 					<li>左右滚动？ 更多效果</li>
-					<li>单测</li>
+					<li>增加组件单元测试</li>
 				</ol>
 			</div>
 		</div>
@@ -93,8 +162,17 @@ yarn add react-notice-board</code></pre>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_img_brand_.html">"IMG_<wbr>BRAND"</a>
 					</li>
 				</ul>
 			</nav>

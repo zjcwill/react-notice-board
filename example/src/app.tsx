@@ -17,11 +17,11 @@ export default class App extends Component {
       <PageContainer>
         <NoticeBoard
           width={600}
-          stepDuration={2000}
+          stepDuration={1000}
           dataSource={[
-            "1. 我们不加班",
-            "2. 我们加班发工资",
-            "3. 今天吃点啥",
+            "1. 我们不加班，重要的事情说三遍",
+            "2. 我们加班发工资加鸡腿",
+            "3. 今天中午吃点啥",
             "4.你中暑了"
           ]}
           extra={

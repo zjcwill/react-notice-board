@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes, Keyframes } from "styled-components";
+import IMG_LOGO from "./asset/logo.png";
 
 interface IProps {
   dataSource: string[];
@@ -115,6 +116,7 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
     return (
       <div>
         <Wrapper {...this.props}>
+          <img src={IMG_LOGO} />
           <Content
             {...this.props}
             animation={this.scrollKeyFrames}

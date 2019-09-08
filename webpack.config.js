@@ -14,6 +14,14 @@ module.exports = {
       {
         test: /\.html$/,
         use: 'html-loader'
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          'url-loader?limit=8192&name=img/[name]-[hash:5].[ext]',
+          //图片压缩
+          'image-webpack-loader'
+        ]
       }
     ]
   },

@@ -3,8 +3,11 @@ import { Keyframes } from "styled-components";
 interface IProps {
     dataSource: string[];
     stepDuration?: number;
+    width?: number;
     height?: number;
     extra?: React.ReactElement | null | false;
+    textClassName?: string | undefined;
+    hideBrand?: boolean;
 }
 interface IState {
     dataSource: string[];
@@ -14,6 +17,8 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
     static defaultProps: {
         stepDuration: number;
         height: number;
+        className: string;
+        hideBrand: boolean;
     };
     constructor(props: IProps);
     componentDidMount: () => void;

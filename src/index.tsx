@@ -1,11 +1,15 @@
 import React from "react";
 import styled, { keyframes, Keyframes } from "styled-components";
+import IMG_BRAND from "./IMG_BRAND";
 
 interface IProps {
   dataSource: string[];
   stepDuration?: number;
+  width?: number;
   height?: number;
   extra?: React.ReactElement | null | false;
+  textClassName?: string | undefined;
+  hideBrand?: boolean;
 }
 interface IState {
   dataSource: string[];
@@ -17,6 +21,7 @@ interface IContent extends IProps {
 }
 
 const Wrapper = styled.div<IProps>`
+  width: ${props => (props.width ? `${props.width}px` : "100%")};
   height: ${props => (props.height ? `${props.height}px` : "44px")};
   background: rgba(255, 255, 255, 1);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1);
@@ -28,7 +33,7 @@ const Wrapper = styled.div<IProps>`
 const LogoImg = styled.img`
   width: 31px;
   height: 14px;
-  margin: auto 12px auto 16px;
+  margin: auto 0 auto 16px;
 `;
 
 const Content = styled.div<IContent>`
@@ -36,6 +41,7 @@ const Content = styled.div<IContent>`
   animation: ${props => (props.animation ? props.animation : "")}
     ${props => props.duration}s linear infinite;
   margin-right: auto;
+  margin-left: 12px;
 `;
 const Text = styled.p<IProps>`
   color: #ff6f41;
@@ -52,7 +58,9 @@ const ExtraWrapper = styled.div`
 export default class NoticeBoard extends React.PureComponent<IProps, IState> {
   static defaultProps = {
     stepDuration: 1000,
-    height: 44
+    height: 44,
+    className: "",
+    hideBrand: false
   };
   constructor(props: IProps) {
     super(props);
@@ -67,7 +75,7 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
   handleDataSource = () => {
     const { dataSource = [] } = this.props;
     return new Promise((resolve, reject) => {
-      if (dataSource.length > 1) {
+      if (dataSource.length > 0) {
         this.setState(
           {
             dataSource: dataSource.concat(dataSource[0])
@@ -77,7 +85,8 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
           }
         );
       } else {
-        reject("dataSource.length <= 1");
+        reject("dataSource.length must >= 1");
+        throw new Error("dataSource.length must >= 1");
       }
     });
   };
@@ -127,21 +136,22 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
   };
   render() {
     const { dataSource } = this.state;
-    const { extra } = this.props;
+    const { extra, textClassName, hideBrand } = this.props;
     return (
       <div>
         <Wrapper {...this.props}>
-          <LogoImg
-            src={`data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAAAcCAYAAAA5pQx5AAACf0lEQVRYR81YvXITMRDetd3zAoTBKWM6yeMaOh4CyrRQUaSJUzAUaUjLK7iioiO1bakj6RgY8AvQMeDxZu4GMcdF0q6kOweX0kq734/2ZCF4ftPpdLLb7T61pxDxyhjzqBpXSpFvLSL+BID3RPTMWvvbFxMam81mR9vt9sozf22tnTTH6cVjf/6LS5Tk9AZpredEdOoBPjfGnMWAuzWDweBkvV6/kRThYiR5XWwvwJVSFetH7aJHo9FkuVxeN8dTVOJISMnbOfAcICkFh8BrrQ+J6LPE5lVM58BT7Naw6CkRzT1H48wYc2vcB14p9QAAvgJA9Ixaa+t5DnioB7n1t5LkqJfjEh94rfUrIjoBgHshZ/QCvARADmHcmY/Nc4pze/+jeI7Nu7Q7V2xvn7MS1UrckgK4889ZF4WXEJcKvjOrczaX3Oa01tndPdSF24Q0mtt3ALjfmt/gxeWB5IL194xzanHEVMlKXJMM/OWTp0D0rgF+A4jH+PbjBzFwScEcMY55aVyqtbuOrxXn1JQQc1fdPZeQGjinEkdMX3f3XFCSdShRkyOmnSg1XlJo1zEYUtP9rZQQ0y6qj+7uurm0CbZrQsQNABwbY+rmh2113EPCeDx+vlgsfqXY3CXLIavRHL0PDKXAa7CIG2NM/bljXyv2bVvuX5XU8tw+UeAlykkL9PSHqOLSfYuA59hcWlgojitYuj+3T1Txfds8duNyZ7x34FKbd00Op1TvwKU2L/l0+UDcOXCpklJnlColXc/FBd/c/tzdk148QyQNh8PD1Wr1hSumOZ97QZHmiAKXvngyyarP0kNr7TdpUf9Fc5O8eEYA/UDE18aY8xTQ+wR+A3jcZWsSRVoZAAAAAElFTkSuQmCC
-`}
-          />
+          {!hideBrand && <LogoImg src={IMG_BRAND} />}
           <Content
             {...this.props}
-            animation={this.scrollKeyFrames}
+            animation={this.stepLen > 2 ? this.scrollKeyFrames : null}
             duration={this.duration}
           >
             {dataSource.map((item, index) => (
-              <Text {...this.props} key={`${index}-${item}`}>
+              <Text
+                {...this.props}
+                className={textClassName}
+                key={`${index}-${item}`}
+              >
                 {item}
               </Text>
             ))}

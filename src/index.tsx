@@ -75,6 +75,14 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
   componentDidMount = () => {
     this.init();
   };
+  componentWillReceiveProps(nextProps) {
+    if (
+      JSON.stringify(nextProps.dataSource) !==
+      JSON.stringify(this.props.dataSource)
+    ) {
+      this.init();
+    }
+  }
   handleDataSource = () => {
     const { dataSource = [] } = this.props;
     return new Promise((resolve, reject) => {

@@ -22,6 +22,7 @@ export default class NoticeBoard extends React.PureComponent<IProps, IState> {
     };
     constructor(props: IProps);
     componentDidMount: () => void;
+    componentWillReceiveProps(nextProps: any): void;
     handleDataSource: () => Promise<unknown>;
     readonly stepLen: number;
     readonly duration: number;

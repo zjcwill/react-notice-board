@@ -1,11 +1,13 @@
 {
-  "name": "mylib",
-  "version": "0.1.0",
+  "name": "react-notice-board",
+  "version": "1.2.0",
+  "description": "react 公告栏组件",
   "license": "MIT",
-  "author": "zhangjiachao",
   "main": "dist/index.js",
   "module": "dist/mylib.esm.js",
   "typings": "dist/index.d.ts",
+  "repository": "git@github.com:zjcwill/react-notice-board.git",
+  "author": "zjcwill@foxmail.com",
   "files": [
     "dist"
   ],
